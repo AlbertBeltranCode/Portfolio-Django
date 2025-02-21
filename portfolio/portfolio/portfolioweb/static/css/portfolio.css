@@ -1,0 +1,54 @@
+/* portfolio.css */
+body {
+    background-color: #1e1e1e; /* VS Code editor background */
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #d4d4d4;
+    text-align: center;
+    margin: 1.5rem 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #1e1e1e;
+  }
+  
+  .asignatura {
+    background-color: #252526; /* VS Code side panel color */
+    border: 1px solid #3c3c3c;
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .asignatura:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    border-color: #007acc; /* VS Code accent blue */
+  }
+  
+  .asignatura h2 {
+    font-size: 1.75rem;
+    color: #569cd6; /* VS Code blue */
+    margin-bottom: 0.5rem;
+  }
+  
+  .asignatura h2 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  
+  .asignatura h2 a:hover {
+    color: #9cdcfe; /* lighter blue on hover */
+  }
+  

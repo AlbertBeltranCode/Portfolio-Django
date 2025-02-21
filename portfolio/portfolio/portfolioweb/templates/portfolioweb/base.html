@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+    <script src="{% static 'js/settings.js' %}" defer></script>
+    <script src="{% static 'js/carrusel.js' %}" defer></script>
+    <script src="{% static 'js/imagen_rebota.js' %}" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>ALBERT BELTRAN CARBONELL</h1>
+    </header>
+
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="{% url 'home' %}"><span class="sidebar-icon">🏠</span> Inicio</a></li>
+            <li><a href="{% url 'about_me' %}"><span class="sidebar-icon">👤</span> Sobre Mi</a></li>
+            <li><a href="{% url 'portfolio' %}"><span class="sidebar-icon">📂</span> Portfolio</a></li>
+        </ul>
+        <div class="sidebar-extra">
+            <h2>Activity</h2>
+            <ul>
+                <li><a href="{% url 'explorer' %}"><span class="sidebar-icon">📁</span> Explorar</a></li>
+                <li><a href="{% url 'search' %}"><span class="sidebar-icon">🔍</span> Buscar</a></li>
+                <li><a href="{% url 'hobby' %}"><span class="sidebar-icon">👽</span>Mi Hobby</a></li>
+                <li><a href="{% url 'settings' %}"><span class="sidebar-icon">⚙️</span> Ajustes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Página web realizada por Albert Beltrán Carbonell</p>
+    </footer>
+</body>
+</html>

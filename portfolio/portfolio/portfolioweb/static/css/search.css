@@ -1,0 +1,66 @@
+/* search.css */
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-container h1,
+.search-container h2 {
+    text-align: center;
+    color: #569cd6;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+form label {
+    flex: 1;
+    margin-right: 10px;
+}
+
+form input,
+form select {
+    flex: 2;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #569cd6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4178a4;
+}
+
+.project-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.project-list li {
+    background-color: #252526;
+    border: 1px solid #3c3c3c;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    color: #d4d4d4;
+}
+
+.project-list h3 {
+    margin-top: 0;
+    color: #569cd6;
+}

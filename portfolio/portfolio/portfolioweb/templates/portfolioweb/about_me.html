@@ -1,0 +1,22 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/about_me.css' %}">
+{% endblock %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<div class="about-me">
+  <img class="about-me-arrow" src="{% static 'images/arrow.png' %}" alt="Arrow">
+    <div class="about-me-image">
+        <img id="draggable-image" src="{% static 'images/my_photo.jpeg' %}" alt="My Photo">
+    </div>
+    <div class="about-me-content">
+        <h1>Un poco sobre mí:</h1>
+        <p>¡Hola! Soy Albert Beltrán, un apasionado desarrollador de software con sede en Almenara, Valencia. Me especializo en crear soluciones web innovadoras y eficientes que resuelvan problemas complejos de manera efectiva.</p>
+        <p>A lo largo de mi carrera, he trabajado en diversos proyectos, incluyendo este portafolio web desarrollado con Django, lo que ha fortalecido mi capacidad para abordar desafíos técnicos con creatividad y precisión.</p>
+        <p>Si buscas un profesional dedicado, creativo y orientado a resultados, estaré encantado de colaborar contigo. Puedes contactarme a través de <a href="mailto:albertbeltrancode@gmail.com">albertbeltrancode@gmail.com</a> o visitar mi página de contacto para más información.</p>
+    </div>
+</div>
+{% endblock %}

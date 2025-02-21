@@ -1,0 +1,34 @@
+<!-- search.html -->
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+
+{% block title %}Buscar Proyectos{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <h1>Buscar Proyectos</h1>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados de la Búsqueda</h2>
+    <ul class="project-list">
+        {% for proyecto in proyectos %}
+            <li>
+                <h3>{{ proyecto.name }}</h3>
+                <p>{{ proyecto.short_description }}</p>
+                <p><strong>Tecnologías:</strong> {{ proyecto.tecnologias }}</p>
+                <p><strong>Tipo de Proyecto:</strong> {{ proyecto.tipo_proyecto }}</p>
+                <p><strong>Año:</strong> {{ proyecto.año }}</p>
+            </li>
+        {% empty %}
+            <li>No se encontraron proyectos que coincidan con los criterios de búsqueda.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

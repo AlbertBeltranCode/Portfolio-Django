@@ -1,0 +1,19 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/proyectos_por_asignatura.css' %}">
+{% endblock %}
+
+{% block title %}{{ asignatura.name }}{% endblock %}
+
+{% block content %}
+<h1>Projects for {{ asignatura.name }}</h1>
+<div class="grid">
+    {% for proyecto in proyectos %}
+        <div class="asignatura">
+            <h2><a href="{% url 'proyecto_detalle' proyecto.id %}">{{ proyecto.name }}</a></h2>
+            <p>{{ proyecto.short_description }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

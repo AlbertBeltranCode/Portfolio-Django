@@ -1,0 +1,18 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+{% endblock %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+<h1>Mis asignaturas</h1>
+<div class="grid">
+    {% for asignatura in asignaturas %}
+        <div class="asignatura">
+            <h2><a href="{% url 'proyectos_por_asignatura' asignatura.id %}">{{ asignatura.name }}</a></h2>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

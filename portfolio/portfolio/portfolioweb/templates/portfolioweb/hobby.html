@@ -1,0 +1,125 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+
+{% block title %}Mi Hobby{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/hobby.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="hobby-container">
+    <h2>Mi Hobby</h2>
+    <p>En mis ratos libres de programación me dedico a estar con mis mascotas, estar con mi pareja y a pintar Warhammer. Aquí podrás encontrar fotografías de figuras montadas y pintadas por mí. Warhammer es un hobby apasionante que me permite relajarme y ser creativo.
+        <br> Haz clic en una imagen para ampliarla y clic afuera para volver a su tamaño normal.</p>
+
+    <div class="image-grid">
+        {% for image in images %}
+            <div class="image-container">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}" class="grid-image">
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal (keep your original modal HTML) -->
+<div id="modal" class="modal">
+    <span class="modal-close" id="modal-close">&times;</span>
+    <div class="modal-content-container">
+        <img class="modal-content" id="modal-img">
+        <div class="modal-caption" id="modal-caption"></div>
+    </div>
+</div>
+
+<script>
+// JavaScript actualizado para el modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const captionText = document.getElementById("modal-caption");
+    const closeBtn = document.getElementById("modal-close");
+    let isZoomed = false;
+    let isDragging = false;
+    let startX, startY, translateX = 0, translateY = 0;
+
+    // Abrir modal
+    document.querySelectorAll('.grid-image').forEach(img => {
+        img.addEventListener('click', () => {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+            captionText.textContent = img.alt;
+            resetZoom();
+        });
+    });
+
+    // Zoom y pan
+    modalImg.addEventListener('click', function(e) {
+        if (!isZoomed) {
+            zoomImage(e);
+        }
+    });
+
+    modalImg.addEventListener('mousedown', startDragging);
+    document.addEventListener('mousemove', dragImage);
+    document.addEventListener('mouseup', stopDragging);
+
+    // Cerrar modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        resetZoom();
+    });
+    
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) {
+            modal.style.display = "none";
+            resetZoom();
+        }
+    });
+
+    function zoomImage(e) {
+        const rect = modalImg.getBoundingClientRect();
+        const scale = 2;
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+        
+        modalImg.style.transformOrigin = `${offsetX}px ${offsetY}px`;
+        modalImg.style.transform = `scale(${scale})`;
+        modalImg.style.cursor = 'grab';
+        isZoomed = true;
+    }
+
+    function resetZoom() {
+        modalImg.style.transform = 'scale(1)';
+        modalImg.style.cursor = 'zoom-in';
+        isZoomed = false;
+        translateX = 0;
+        translateY = 0;
+    }
+
+    function startDragging(e) {
+        if (isZoomed) {
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            modalImg.style.cursor = 'grabbing';
+        }
+    }
+
+    function dragImage(e) {
+        if (isDragging) {
+            e.preventDefault();
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            modalImg.style.transform = `scale(2) translate(${translateX}px, ${translateY}px)`;
+        }
+    }
+
+    function stopDragging() {
+        if (isDragging) {
+            isDragging = false;
+            modalImg.style.cursor = 'grab';
+        }
+    }
+});
+</script>
+{% endblock %}

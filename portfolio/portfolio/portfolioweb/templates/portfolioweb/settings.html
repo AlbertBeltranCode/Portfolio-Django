@@ -1,0 +1,44 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+{% block title %}Settings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-menu">
+    <h2>Settings</h2>
+    <div class="setting-item">
+        <label for="theme-toggle">Theme:</label>
+        <select id="theme-toggle">
+            <option value="dark">Dark Mode</option>
+            <option value="light">Light Mode</option>
+        </select>
+    </div>
+    <div class="setting-item">
+        <label for="font-size">Font Size:</label>
+        <select id="font-size">
+            <option value="1rem">Small</option>
+            <option value="1.2rem" selected>Medium</option>
+            <option value="1.4rem">Large</option>
+        </select>
+    </div>
+    <div class="setting-item">
+        <label for="line-height">Line Height:</label>
+        <select id="line-height">
+            <option value="1.2">1.2</option>
+            <option value="1.4" selected>1.4</option>
+            <option value="1.6">1.6</option>
+        </select>
+    </div>
+    <div class="setting-item">
+        <label for="font-family">Font Family:</label>
+        <select id="font-family">
+            <option value="'Consolas', 'Courier New', monospace">Consolas</option>
+            <option value="Arial, sans-serif">Arial</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+        </select>
+    </div>
+</div>
+{% endblock %}

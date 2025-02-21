@@ -1,0 +1,44 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/proyecto_detalle.css' %}">
+{% endblock %}
+
+{% block title %}{{ proyecto.name }}{% endblock %}
+
+{% block content %}
+<div class="project-detail">
+    <h2><a href="{% url 'proyectos_por_asignatura' asignatura.id %}">Volver</a></h2>
+    
+    <div class="project-detail-header">
+        <h1>{{ proyecto.name }}</h1>
+    </div>
+    
+    <!-- Contenido principal con imagen flotante a la derecha -->
+    <div class="project-detail-content">
+        <div class="project-detail-image">
+            <img src="{{ proyecto.image.url }}" alt="{{ proyecto.name }}">
+        </div>
+        <p class="main-description">
+            {{ proyecto.full_description|linebreaks }}
+        </p>
+    </div>
+    
+    {% if proyecto.technical_description %}
+    <div class="project-detail-technical">
+        <h3>Descripción Técnica</h3>
+        <p>{{ proyecto.technical_description|linebreaks }}</p>
+    </div>
+    {% endif %}
+    
+    {% if proyecto.video %}
+    <div class="project-detail-video">
+        <h3>Video</h3>
+        <video controls>
+            <source src="{{ proyecto.video.url }}" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

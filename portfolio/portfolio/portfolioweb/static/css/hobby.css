@@ -1,0 +1,136 @@
+/* CSS ajustado al estilo VS Code */
+.hobby-container {
+    padding: 2rem;
+    background: #1e1e1e;
+    min-height: 100vh;
+    color: #d4d4d4;
+    text-align: center;
+}
+
+.hobby-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 1.5rem;
+    color: #569cd6;
+    border-bottom: 2px solid #3a3d41;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+   
+}
+
+.hobby-container p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #9cdcfe;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 1px solid #3a3d41;
+    background: #252526;
+    transition: transform 0.2s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-3px);
+    border-color: #569cd6;
+}
+
+.grid-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.grid-image:hover {
+    opacity: 0.9;
+}
+
+/* Modal estilo VS Code */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal ajustado */
+.modal-content {
+    position: relative;
+    max-width: 100%;
+    max-height: 80vh;
+    background: #1e1e1e;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid #3a3d41;
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+}
+
+.modal-content.zoomed {
+    transform: scale(2);
+    cursor: grab;
+}
+
+.modal-content.zoomed:active {
+    cursor: grabbing;
+}
+
+.modal-content-container {
+    position: relative;
+    display: inline-block;
+    max-width: 90%;
+    overflow: hidden;
+    max-height: 80vh;
+}
+
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #d4d4d4;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #569cd6;
+}
+
+.modal-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 88%;
+    padding: 15px 20px;
+    color: #fff;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+    text-align: center;
+    font-size: 0.95em;
+    pointer-events: none;
+    border-radius: 0 0 3px 3px;
+}

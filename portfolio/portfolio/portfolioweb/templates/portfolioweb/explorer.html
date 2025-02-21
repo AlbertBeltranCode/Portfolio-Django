@@ -1,0 +1,44 @@
+{% extends 'portfolioweb/base.html' %}
+{% load static %}
+
+{% block title %}Explorar Repositorios{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/explorer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="explorer-container">
+    <h1>Mis Repositorios de GitHub</h1>
+    <div id="repo-cards" class="repo-cards">
+        <!-- Los repositorios se cargarán aquí dinámicamente -->
+    </div>
+</div>
+
+<!-- Script para obtener y mostrar los repositorios -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const username = 'AlbertBeltranCode'; // Reemplaza con tu nombre de usuario de GitHub
+    const repoContainer = document.getElementById('repo-cards');
+
+    fetch(`https://api.github.com/users/${username}/repos`)
+        .then(response => response.json())
+        .then(repos => {
+            repos.forEach(repo => {
+                const repoCard = document.createElement('div');
+                repoCard.className = 'repo-card';
+                repoCard.innerHTML = `
+                    <h2><a href="${repo.html_url}" target="_blank">${repo.name}</a></h2>
+                    <p>${repo.description || 'No hay descripción disponible.'}</p>
+                    <p><strong>Stars:</strong> ${repo.stargazers_count} | <strong>Forks:</strong> ${repo.forks_count}</p>
+                `;
+                repoContainer.appendChild(repoCard);
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los repositorios:', error);
+            repoContainer.innerHTML = '<p>No se pudieron cargar los repositorios de GitHub.</p>';
+        });
+});
+</script>
+{% endblock %}
